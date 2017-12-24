@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.box{
+		width:400px;
+		height:auto;
+		margin: 200px auto;
+	}
+	.tab{
+		width:100px;
+		height: 30px;
+		border:1px red solid;
+	}
+	.tab li{
+		display: flex;
+		display:-webkit-flex;
+	}
+	.tab li p{
+		width:50%;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+	}
+</style>
+<script type="text/javascript" src="js/jquery.min.js" ></script>
+<script>
+$(function(){
+	
+	$('input[value="上移"]').click(function(){
+		
+		var $nowLi = $(this).closest('li');
+		var $ul = $(this).closest('ul');
+		
+		var $prevLi = $nowLi.prev();
+		if(!$prevLi.length){
+			alert('到头了');
+		}
+		else{
+			$nowLi.insertBefore( $prevLi );
+		}
+		
+	});
+	
+	$('input[value="下移"]').click(function(){
+		
+		var $nowLi = $(this).closest('li');
+		
+		var $nextLi = $nowLi.next();
+		
+		if(!$nextLi.length){
+			alert('到尾了');
+		}
+		else{
+			$nowLi.insertAfter( $nextLi );
+		}
+		
+	});
+	
+});
+</script>
+</head>
+
+<body>
+<!--<ul>
+	<li>1.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+    <li>2.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+    <li>3.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+    <li>4.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+    <li>5.<input type="button" value="上移" /><input type="button" value="下移" /></li>
+</ul>-->
+<div class="box">
+	<ul class="tab">
+		<li>
+			<p class="sang">1上移</p>
+			<p >1下移</p>
+		</li>
+	</ul>
+	<ul class="tab">
+		<li>
+			<p >2上移</p>
+			<p class="xia">2下移</p>
+		</li>
+	</ul>
+	<ul class="tab">
+		<li>
+			<p class="sang">3上移</p>
+			<p class="xia">3下移</p>
+		</li>
+	</ul>
+</div>
+<script>
+	$(".sang").click(function(){
+		var $ul = $(this).closest("ul");
+		var $prevUl = $ul.prev();
+		console.log($prevUl.length);
+		if($prevUl.length == 0){
+			alert("到头了");
+		}else{
+			$ul.insertBefore($prevUl);
+		}
+	})
+	$(".xia").click(function(){
+		var $ul = $(this).closest("ul");
+		var $nextUl = $ul.next();
+		console.log($nextUl.length);
+		if($nextUl.length == 0){
+			alert("到头了");
+		}else{
+			$ul.insertAfter($nextUl);
+		}
+	})
+</script>
+</body>
+</html>
+
