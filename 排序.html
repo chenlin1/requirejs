@@ -115,6 +115,17 @@ $(function(){
 			$ul.insertAfter($nextUl);
 		}
 	})
+var jsonstr="[]";
+var jsonarray = eval('('+jsonstr+')');
+
+
+var arr  =
+     {
+         "name" : 3,
+         "value" : 3
+     }
+console.log(jsonarray.push(arr));
+console.log(JSON.stringify(jsonarray))
 </script>
 </body>
 </html>
